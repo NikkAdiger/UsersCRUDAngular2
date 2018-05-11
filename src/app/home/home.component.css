@@ -1,0 +1,37 @@
+.clr{
+  clear:both;
+}
+.clearfix:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+/*--------Clear----------*/
+.conteiner {
+  margin: 50px auto 0 auto;
+  max-width: 1080px;
+  background-color: #e4e4e4;
+  /*text-align: center;*/
+}
+.conteiner h5 {
+  margin: 20px 0 20px 30px;
+}
+.main {
+  min-height: 400px;
+}
+.row {
+  margin: 0 30px;
+  border: 1px solid #919191;
+  background-color: #fff;
+}
+.middle {
+  border-left: 1px solid #919191;
+  border-right: 1px solid #919191;
+}
+footer{
+  top: 80%;
+}
+.added {
+  margin: 30px;
+  float: right;
+}
