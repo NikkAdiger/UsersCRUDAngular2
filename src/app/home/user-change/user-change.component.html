@@ -1,0 +1,95 @@
+<div class="modal fade in">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body">
+        <div class="modal-header">
+          <h4 class="modal-title">User</h4>
+          <button type="button" class="close" (click)="closeUser()">
+            <span>×</span>
+          </button>
+        </div>
+
+        <div class="row">
+          <div class="col-6 form-group">
+            <label class="control-label">Enter name</label>
+            <div>
+              <input
+                type="text"
+                [value]="userTmp.name"
+                [(ngModel)]="userTmp.name"
+                placeholder="Name"
+              >
+            </div>
+          </div>
+
+          <div class="col-6 form-group">
+            <label class="control-label" for="role">Select role</label>
+            <select class="form-control" id="role" [(ngModel)]="userTmp.role" placeholder="Name">
+              <option *ngFor="let r of roles" [value]="r.type">{{ r.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" (click)="closeUser()">Cancel</button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            (click)="onSubmit()"
+            [disabled]= " userTmp.name == '' || userTmp.role == '' "
+          >OK
+          </button>
+        </div>
+
+      <!--<form [formGroup]="form" (ngSubmit)="onSubmit()">-->
+      <!--<div class="row">-->
+      <!--<div-->
+      <!--[ngClass]="{'has-error': form.get('name').invalid && form.get('name').touched}"-->
+      <!--class="form-group"-->
+      <!--&gt;-->
+      <!--<label for="name">Name</label>-->
+      <!--<input-->
+      <!--formControlName="name"-->
+      <!--type="text"-->
+      <!--class="form-control underlined"-->
+      <!--id="name"-->
+      <!--placeholder="Name"-->
+      <!--[value]="userTmp.name"-->
+      <!--[(ngModel)]="userTmp.name"-->
+      <!--&gt;-->
+      <!--<span-->
+      <!--*ngIf="form.get('name').invalid && form.get('name').touched"-->
+      <!--class="form-help-text"-->
+      <!--&gt;-->
+      <!--<span *ngIf="form.get('name')['errors']['required']">Name should not be empty</span>-->
+      <!--<span *ngIf="form.get('name')['errors']['minlength']">-->
+      <!--Name length min {{ form.get('name')['errors']['minlength']['requiredLength'] }}-->
+      <!--Currently entered {{ form.get('name')['errors']['minlength']['actualLength'] }}-->
+      <!--</span>-->
+      <!--</span>-->
+      <!--</div>-->
+
+      <!--<div class="col-6 form-group">-->
+      <!--<label class="control-label" for="role">Select role</label>-->
+      <!--<select class="form-control" id="role" [(ngModel)]="userTmp.role">-->
+      <!--<option *ngFor="let r of roles" [value]="r.type">{{ r.name }}</option>-->
+      <!--</select>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <!--<div class="modal-footer">-->
+      <!--<button type="button" class="btn btn-secondary" (click)="closeUser()">Cancel</button>-->
+      <!--<button-->
+      <!--type="button"-->
+      <!--class="btn btn-primary"-->
+      <!--(click)="onSubmit()"-->
+      <!--[disabled]="!form.invalid"-->
+      <!--&gt;OK-->
+      <!--</button>-->
+      <!--</div>-->
+      <!--</form>-->
+    </div>
+  </div>
+</div>
+</div>
+

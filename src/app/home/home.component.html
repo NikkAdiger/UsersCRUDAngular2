@@ -1,14 +1,49 @@
-<div class="conteiner">
+<div class="conteiner" [ngClass]="{'podlogka': isUserVisible}">
   <div class="main">
     <h5>User list</h5>
-    <div class="row">
-      <div class="col s3">Name</div>
-      <div class="col s4 middle">Permissions</div>
-      <div class="col s3">Actions</div>
+    <div class="row text-center" *ngIf="!isLoaded">
+      <div class="indeterminate"></div>
     </div>
-    <!--<app-user *ngFor="u of users"></app-user>-->
+    <div *ngIf="isLoaded">
+      <div class="row">
+        <div class="col-4">Name</div>
+        <div class="col-4 middle">Permissions</div>
+        <div class="col-4">Actions</div>
+      </div>
+
+      <div class="row" *ngFor="let user of users">
+        <div class="col-4">{{ user.name }}</div>
+        <div class="col-4 middle">{{ user.role | roleName: roles }}</div>
+        <div class="col-4">
+          <div class="buttons">
+            <button
+              class="btn btn-outline-info btn-sm"
+              (click)="userChange(user)"
+            >
+              <i class="material-icons">edit</i>
+            </button>
+            <button
+              class="btn btn-outline-danger btn-sm"
+              (click)="userDel(user)"
+            >
+              <i class="material-icons">delete</i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="isUserVisible">
+      <app-user-change
+        (userApply)="onUserApply($event)"
+        (userCancel)="onUserCancel()"
+        [user]="user"
+        [roles]="roles"
+      ></app-user-change>
+    </div>
+
+    <footer class="clearfix">
+      <button type="button" class="btn btn-success added" (click)="onAdd()"><i class="material-icons">add</i></button>
+    </footer>
   </div>
-  <footer class="clearfix">
-    <a class="btn-floating btn-medium waves-effect waves-light green added"><i class="material-icons">add</i></a>
-  </footer>
 </div>
